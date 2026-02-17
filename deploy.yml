@@ -1,12 +1,12 @@
 ---
 - name: Pull Docker Image from Docker Hub
   hosts: localhost
-  remote_user: aayanksinghai
+  connection: local
   become: false
   tasks:
     - name: Pull Docker Image
       docker_image:
-        name: "iiitb/calculator"
+        name: "aayanksinghai/jenkins-calculator-demo"
         source: pull
       register: docker_pull_result
 
@@ -19,13 +19,15 @@
         name: docker
         state: started
         
-    - name: stop container
-      shell: docker stop calculator
-      
-    - name: rm container
-      shell: docker rm calculator
-     
-    - name: Running container
-      shell: docker run -it -d --name calculator iiitb/calculator /bin/bash
+    - name: Stop existing container
+      docker_container:
+        name: calculator
+        state: absent
 
+    - name: Run container
+      docker_container:
+        name: calculator
+        image: aayanksinghai/jenkins-calculator-demo:latest
+        state: started
+        restart_policy: always
 
