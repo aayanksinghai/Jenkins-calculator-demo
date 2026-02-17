@@ -31,8 +31,8 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag calculator aayanksinghai/Jenkins-calculator-demo:latest'
-                    sh 'docker push aayanksinghai/Jenkins-calculator-demo'
+                    sh 'docker tag calculator aayanksinghai/jenkins-calculator-demo:latest'
+                    sh 'docker push aayanksinghai/jenkins-calculator-demo'
                     }
                  }
             }
