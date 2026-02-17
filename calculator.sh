@@ -7,11 +7,11 @@ echo "3. Multiplication"
 echo "4. Division"
 echo "5. Remainder"
 
-echo -n "Enter First Number: "
+echo -n "Enter the First Number: "
 read a
-echo -n "Enter Second Number: "
+echo -n "Enter the Second Number: "
 read b
-echo -n "Enter the Choice: "
+echo -n "Enter your Choice: "
 read ch
 
 case $ch in
